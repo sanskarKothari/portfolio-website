@@ -36,7 +36,7 @@ const experiences: Experience[] = [
     company: "LeetCode / Codeforces",
     period: "2025 - Present",
     description:
-      "Solved 300+ problems across platforms to strengthen algorithmic thinking and problem-solving skills.",
+      "Solved 250+ problems across platforms to strengthen algorithmic thinking and problem-solving skills.",
   },
   {
     id: 4,
