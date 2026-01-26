@@ -60,7 +60,6 @@ const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
           </p>
         </div>
 
-        {/* Social Links */}
         <div className="flex gap-8">
           {links.map((item) => (
             <a
@@ -77,7 +76,6 @@ const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
           ))}
         </div>
 
-        {/* Status */}
         <div className="flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/5">
           <div className="relative w-2 h-2">
             <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>

@@ -15,10 +15,9 @@ const Contact: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Text Reveal Animation
       if (titleRef.current) {
         const chars = titleRef.current.innerText.split("");
-        // Wrap characters for animation
+
         titleRef.current.innerHTML = chars
           .map(
             (c) =>
@@ -41,7 +40,6 @@ const Contact: React.FC = () => {
         });
       }
 
-      // 2. Staggered Content Fade In
       gsap.fromTo(
         ".contact-stagger",
         { opacity: 0, y: 30 },
@@ -57,7 +55,6 @@ const Contact: React.FC = () => {
         }
       );
 
-      // 3. Background Gradient Float
       gsap.to(".contact-glow", {
         scale: 1.2,
         opacity: 0.6,
@@ -78,7 +75,6 @@ const Contact: React.FC = () => {
 
     setIsLoading(true);
 
-    // 🔴 REPLACE THESE WITH YOUR ACTUAL EMAILJS KEYS
     const SERVICE_ID = "service_ch3dsgp";
     const TEMPLATE_ID = "template_oa5061s";
     const PUBLIC_KEY = "yipmvuzmsxqxM3Yjb";
@@ -101,7 +97,6 @@ const Contact: React.FC = () => {
           duration: 0.3,
         });
 
-        // Reset form after 3 seconds
         setTimeout(() => {
           setIsSubmitted(false);
           if (formRef.current) formRef.current.reset();
@@ -137,7 +132,6 @@ const Contact: React.FC = () => {
             Get in Touch
           </span>
 
-          {/* FIXED: Adjusted sizes and width to prevent breaking */}
           <h2
             ref={titleRef}
             className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-white max-w-2xl"
@@ -164,28 +158,25 @@ const Contact: React.FC = () => {
                 Location
               </p>
               <p className="text-xl md:text-3xl font-medium text-white">
-                Remote / Rourkela, India
+                Remote / Rourkela, India (769008)
               </p>
             </div>
           </div>
         </div>
 
-        {/* FORM */}
         <div className="contact-stagger">
           <form
             ref={formRef}
             onSubmit={sendEmail}
             className="space-y-6 rounded-3xl border border-white/5 bg-zinc-900/40 p-8 md:p-12 backdrop-blur-xl shadow-2xl relative overflow-hidden"
           >
-            {/* Subtle Grid on Form */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:2rem_2rem] pointer-events-none" />
 
             <div className="space-y-6 relative z-10">
-              {/* Name Input */}
               <div className="relative group">
                 <input
                   type="text"
-                  name="user_name" // Required by EmailJS
+                  name="user_name"
                   required
                   placeholder="Your Name"
                   className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-indigo-500 transition-all placeholder:text-white/20 peer"
@@ -193,11 +184,10 @@ const Contact: React.FC = () => {
                 <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-indigo-500 transition-all duration-500 peer-focus:w-full" />
               </div>
 
-              {/* Email Input */}
               <div className="relative group">
                 <input
                   type="email"
-                  name="user_email" // Required by EmailJS
+                  name="user_email"
                   required
                   placeholder="Email Address"
                   className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-indigo-500 transition-all placeholder:text-white/20 peer"
@@ -205,10 +195,9 @@ const Contact: React.FC = () => {
                 <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-indigo-500 transition-all duration-500 peer-focus:w-full" />
               </div>
 
-              {/* Message Input */}
               <div className="relative group">
                 <textarea
-                  name="message" // Required by EmailJS
+                  name="message"
                   rows={4}
                   required
                   placeholder="Your Message"

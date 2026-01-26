@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
 
-  // 1. Initial Load Animation
+ 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
@@ -32,26 +32,26 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
     return () => ctx.revert();
   }, []);
 
-  // 2. Smart Scroll (Hide on down, Show on up)
+  
   useEffect(() => {
     let lastScrollY = window.scrollY;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Update background blur state
+     
       setHasScrolled(currentScrollY > 50);
 
-      // Hide/Show logic
+      
       if (currentScrollY > lastScrollY && currentScrollY > 100 && !isMenuOpen) {
-        // Scrolling Down -> Hide
+        
         gsap.to(headerRef.current, {
           y: "-100%",
           duration: 0.3,
           ease: "power2.inOut",
         });
       } else {
-        // Scrolling Up -> Show
+       
         gsap.to(headerRef.current, {
           y: "0%",
           duration: 0.3,
@@ -66,10 +66,10 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMenuOpen]);
 
-  // 3. Mobile Menu Animation Sequence
+  
   useEffect(() => {
     if (isMenuOpen) {
-      // Open Sequence
+     
       gsap.to(menuRef.current, { y: "0%", duration: 0.6, ease: "expo.inOut" });
       gsap.fromTo(
         ".mobile-link",
@@ -85,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
         }
       );
     } else {
-      // Close Sequence
+     
       gsap.to(menuRef.current, {
         y: "-100%",
         duration: 0.6,
@@ -110,7 +110,7 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
             : "bg-transparent"
         }`}
       >
-        {/* Logo */}
+        
         <div
           className="nav-item text-xl font-bold tracking-tighter group flex items-center gap-2 cursor-pointer"
           onMouseEnter={() => {
@@ -128,7 +128,7 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
           <span className="hidden md:inline text-white">Sanskar Kothari</span>
         </div>
 
-        {/* Desktop Nav */}
+     
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -143,9 +143,9 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
             </a>
           ))}
 
-          {/* Action Buttons Container */}
+         
           <div className="flex items-center gap-4">
-            {/* Resume Button */}
+           
             <a
               href={cv}
               download
@@ -159,7 +159,7 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
               </span>
             </a>
 
-            {/* Contact Button */}
+        
             <a
               href="#contact"
               className="nav-item relative px-6 py-2 bg-white rounded-full overflow-hidden group"
@@ -174,7 +174,7 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
           </div>
         </nav>
 
-        {/* Mobile Menu Button (Hamburger) */}
+       
         <button
           className="md:hidden z-[102] relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 nav-item"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -199,12 +199,11 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
         </button>
       </header>
 
-      {/* Mobile Nav Overlay */}
       <div
         ref={menuRef}
         className="fixed inset-0 bg-[#0a0a0a] z-[101] flex flex-col items-center justify-center gap-8 -translate-y-full"
       >
-        {/* Background decorative elements */}
+       
         <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
 
         {navLinks.map((link) => (
@@ -220,7 +219,7 @@ const Header: React.FC<HeaderProps> = ({ onCursorChange }) => {
           </a>
         ))}
 
-        {/* Mobile Resume Link */}
+      
         <a
           href={cv}
           download

@@ -9,9 +9,9 @@ import electionImage from "./election.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// --- Extended Project Interface ---
+
 interface ExtendedProject extends Project {
-  demo?: string; // Optional Live Demo link
+  demo?: string;
 }
 
 const projects: ExtendedProject[] = [
@@ -64,7 +64,7 @@ interface ProjectsProps {
   onCursorChange: (type: "default" | "pointer" | "view") => void;
 }
 
-// --- Project Modal Component ---
+
 const ProjectModal: React.FC<{
   project: ExtendedProject;
   onClose: () => void;
@@ -138,7 +138,6 @@ const ProjectModal: React.FC<{
           </svg>
         </button>
 
-        {/* Image Section */}
         <div className="w-full md:w-1/2 h-64 md:h-auto bg-zinc-900 relative">
           <img
             src={project.image}
@@ -148,7 +147,7 @@ const ProjectModal: React.FC<{
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent md:bg-gradient-to-r" />
         </div>
 
-        {/* Content Section */}
+        
         <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto">
           <span className="text-indigo-500 font-bold uppercase tracking-widest text-xs mb-4">
             {project.category}
@@ -173,7 +172,7 @@ const ProjectModal: React.FC<{
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-auto pt-8 border-t border-white/10">
-            {/* GitHub Button (Only if github link exists) */}
+            
             {project.github && (
               <a
                 href={project.github}
@@ -195,7 +194,7 @@ const ProjectModal: React.FC<{
               </a>
             )}
 
-            {/* Live Demo Button (Only if demo link exists) */}
+           
             {project.demo && (
               <a
                 href={project.demo}
@@ -225,7 +224,7 @@ const ProjectModal: React.FC<{
   );
 };
 
-// --- Project Card (Tile) ---
+
 const ProjectCard: React.FC<{
   project: ExtendedProject;
   index: number;
@@ -333,7 +332,7 @@ const ProjectCard: React.FC<{
   );
 };
 
-// --- Main Projects Component ---
+
 const Projects: React.FC<ProjectsProps> = ({ onCursorChange }) => {
   const containerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -342,7 +341,7 @@ const Projects: React.FC<ProjectsProps> = ({ onCursorChange }) => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title Animation
+    
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: titleRef.current,
@@ -368,7 +367,7 @@ const Projects: React.FC<ProjectsProps> = ({ onCursorChange }) => {
         "-=0.5"
       );
 
-      // Project Cards Staggered Entry
+      
       gsap.fromTo(
         ".project-card",
         { opacity: 0, y: 100, scale: 0.95 },

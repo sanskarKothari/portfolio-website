@@ -5,13 +5,12 @@ import { Skill, Experience } from "../types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// --- Data ---
 const skills: Skill[] = [
   { name: "Frontend (React, Tailwind)", level: 90 },
   { name: "Data Structures (DSA)", level: 85 },
-  { name: "AI & ML (Python)", level: 75 },
+  { name: "AI & ML (Python)", level: 50 },
   { name: "Backend (Node.js)", level: 65 },
-  { name: "Animations (GSAP)", level: 80 },
+  { name: "Animations (GSAP)", level: 50 },
 ];
 
 const experiences: Experience[] = [
@@ -59,7 +58,6 @@ const About: React.FC<AboutProps> = ({ onCursorChange }) => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Text Reveal
       const title = document.querySelector(".about-title");
       if (title) {
         gsap.fromTo(
@@ -78,7 +76,6 @@ const About: React.FC<AboutProps> = ({ onCursorChange }) => {
         );
       }
 
-      // 2. Skill Bar Animation
       gsap.fromTo(
         ".skill-bar-fill",
         { scaleX: 0 },
@@ -94,7 +91,6 @@ const About: React.FC<AboutProps> = ({ onCursorChange }) => {
         }
       );
 
-      // 3. Timeline Drawing Animation
       if (lineRef.current) {
         gsap.fromTo(
           lineRef.current,
@@ -112,7 +108,6 @@ const About: React.FC<AboutProps> = ({ onCursorChange }) => {
         );
       }
 
-      // 4. Timeline Items Fade In
       gsap.fromTo(
         ".timeline-item",
         { opacity: 0, x: -30 },
@@ -138,11 +133,9 @@ const About: React.FC<AboutProps> = ({ onCursorChange }) => {
       ref={sectionRef}
       className="py-24 md:py-40 px-6 md:px-12 bg-zinc-950 relative overflow-hidden"
     >
-      {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10">
-        {/* Left: Bio & Skills */}
         <div>
           <h2 className="about-title text-4xl md:text-6xl font-bold mb-10 tracking-tight text-white">
             <span className="block">I build</span>
@@ -180,14 +173,12 @@ const About: React.FC<AboutProps> = ({ onCursorChange }) => {
           </div>
         </div>
 
-        {/* Right: Experience Timeline */}
         <div className="experience-container">
           <h3 className="text-sm uppercase tracking-widest text-indigo-400 font-bold mb-12">
             Journey So Far
           </h3>
 
           <div className="relative pl-10 space-y-12">
-            {/* The Drawing Line */}
             <div className="absolute left-[7px] top-2 bottom-0 w-[2px] bg-white/10">
               <div
                 ref={lineRef}
@@ -197,7 +188,6 @@ const About: React.FC<AboutProps> = ({ onCursorChange }) => {
 
             {experiences.map((exp) => (
               <div key={exp.id} className="timeline-item relative group">
-                {/* Dot */}
                 <div className="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-zinc-950 border-2 border-white/20 group-hover:border-indigo-500 group-hover:scale-125 transition-all duration-300 z-10" />
 
                 <span className="text-xs font-bold uppercase tracking-wider text-white/30 mb-1 block">
