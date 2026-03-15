@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import cv from "./Sanskar_Kothari_CV.pdf";
+import cv from "./SKCV1.pdf";
 
 interface HeaderProps {
   onCursorChange: (type: "default" | "pointer") => void;
